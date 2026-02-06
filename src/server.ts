@@ -25,6 +25,10 @@ const swaggerOptions = {
         url: `http://localhost:${PORT}/vmpay/v1/authorizer`,
         description: 'Servidor de desenvolvimento',
       },
+      {
+        url: `https://vmpay.adsolucoestecnologia.com.br/vmpay/v1/authorizer`,
+        description: 'Servidor de produção',
+      },
     ],
     tags: [
       { name: 'Authorizations', description: 'Autorização de vendas' },
