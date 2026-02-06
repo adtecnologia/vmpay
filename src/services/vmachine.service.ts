@@ -116,8 +116,7 @@ export class VmachineService {
     const body = `<ven:ReverseConsumption>
          <!--Optional:-->
          <ven:consumptionUid>${request.IdTransaction}</ven:consumptionUid>
-      </ven:ReverseConsumption>
-<ven:ReverseConsumption>`;
+      </ven:ReverseConsumption>`;
 
     const soapEnvelope = this.buildSoapEnvelope(body);
     console.log('[VmachineService] ReverseConsumption - Envelope SOAP:');

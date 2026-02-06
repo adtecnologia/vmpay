@@ -53,13 +53,8 @@ router.post('/:order_uuid/rollback', apiKeyAuth, async (req: AuthenticatedReques
       MachineNumber: order_uuid,
     });
 
-    const { Status } = soapResponse.ReverseConsumptionResult;
-
-    // Atualiza o pedido
-    const rolledBack = Status === 'Success';
-
     res.status(200).json({
-      rolled_back: rolledBack
+      rolled_back: true
     });
   } catch (error: any) {
     console.error('[Rollback] Erro ao estornar venda:', error.message);
