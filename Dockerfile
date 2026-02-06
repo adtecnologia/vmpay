@@ -9,9 +9,6 @@ COPY src ./src
 # Instala dependências e faz build
 RUN npm install && npm run build
 
-# Copia build final
-COPY dist ./dist
-
 # Exponha a porta
 EXPOSE 3000
 
