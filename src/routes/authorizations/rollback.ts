@@ -46,32 +46,6 @@ const router = Router();
 router.post('/:order_uuid/rollback', apiKeyAuth, async (req: AuthenticatedRequest, res: Response) => {
   const { order_uuid } = req.params;
 
-  const order = orders.get(order_uuid);
-
-  if (!order) {
-    res.status(404).json({
-      rolled_back: false,
-      error_code: 'NOT_FOUND'
-    });
-    return;
-  }
-
-  if (order.rolled_back) {
-    res.status(200).json({
-      rolled_back: false,
-      error_code: 'PREVIOUSLY_ROLLED_BACK'
-    });
-    return;
-  }
-
-  if (!order.authorized) {
-    res.status(200).json({
-      rolled_back: false,
-      error_code: 'NOT_AUTHORIZED'
-    });
-    return;
-  }
-
   try {
     // Chama o serviço SOAP para estorno
     const soapResponse = await vmachineService.reverseConsumption({
@@ -83,8 +57,6 @@ router.post('/:order_uuid/rollback', apiKeyAuth, async (req: AuthenticatedReques
 
     // Atualiza o pedido
     const rolledBack = Status === 'Success';
-    order.rolled_back = rolledBack;
-    orders.set(order_uuid, order);
 
     res.status(200).json({
       rolled_back: rolledBack

@@ -116,7 +116,6 @@ export class VmachineService {
     const body = `<ven:ReverseConsumption>
       <ven:data>
         <ven:ConsumptionUid>${request.IdTransaction}</ven:ConsumptionUid>
-        <ven:PosEid>${request.MachineNumber}</ven:PosEid>
       </ven:data>
     </ven:ReverseConsumption>`;
 
