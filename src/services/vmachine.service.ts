@@ -114,10 +114,10 @@ export class VmachineService {
     await this.initClient();
 
     const body = `<ven:ReverseConsumption>
-      <ven:data>
-        <ven:ConsumptionUid>${request.IdTransaction}</ven:ConsumptionUid>
-      </ven:data>
-    </ven:ReverseConsumption>`;
+         <!--Optional:-->
+         <ven:consumptionUid>${request.IdTransaction}</ven:consumptionUid>
+      </ven:ReverseConsumption>
+<ven:ReverseConsumption>`;
 
     const soapEnvelope = this.buildSoapEnvelope(body);
     console.log('[VmachineService] ReverseConsumption - Envelope SOAP:');
